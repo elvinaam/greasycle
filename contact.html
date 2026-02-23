@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hubungi Kami - GreaseCycle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        /* HEADER */
+        .header {
+            background: #005840;
+            color: white;
+            text-align: left;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* BUTTON BACK */
+        .back-btn {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: #005840;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #004030;
+            color: white;
+        }
+
+        /* CONTAINER */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .form-section, .info-section {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .info-section {
+            background: #f0f9f4;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #005840;
+            color: white;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #004030;
+        }
+
+        .info-box {
+            margin-bottom: 20px;
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .back-btn {
+                position: static;
+                display: inline-block;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="header">
+    <a href="index.html" class="back-btn">Beranda</a>
+    <h1>Hubungi Kami</h1>
+    <p>Kami siap membantu dan menjawab pertanyaan Anda.</p>
+</div>
+
+<div class="container">
+
+    <!-- FORM -->
+    <div class="form-section">
+        <h2>Kirim Pesan</h2>
+
+        <form id="contactForm">
+            <label>Nama Lengkap</label>
+            <input type="text" id="nama" placeholder="Masukkan nama Anda">
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Masukkan email Anda">
+
+            <label>Subjek</label>
+            <input type="text" id="subjek" placeholder="Subjek pesan">
+
+            <label>Pesan</label>
+            <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda..."></textarea>
+
+            <button type="submit">Kirim Pesan</button>
+
+            <p class="error" id="errorMsg"></p>
+            <p class="success" id="successMsg"></p>
+        </form>
+    </div>
+
+    <!-- INFO KONTAK -->
+    <div class="info-section">
+        <h2>Informasi Kontak</h2>
+
+        <div class="info-box">
+            <strong>Alamat</strong>
+            Jl. Semampir, Sukolilo, Surabaya
+        </div>
+
+        <div class="info-box">
+            <strong>Email</strong>
+            info@greasecycle.id
+        </div>
+
+        <div class="info-box">
+            <strong>Telepon</strong>
+            +62 812-3456-7890
+        </div>
+
+        <div class="info-box">
+            <strong>Jam Operasional</strong>
+            Senin - Jumat (08.00 - 16.00)
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let nama = document.getElementById("nama").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let pesan = document.getElementById("pesan").value.trim();
+    let errorMsg = document.getElementById("errorMsg");
+    let successMsg = document.getElementById("successMsg");
+
+    errorMsg.textContent = "";
+    successMsg.textContent = "";
+
+    if(nama === "" || email === "" || pesan === ""){
+        errorMsg.textContent = "Semua field wajib diisi!";
+        return;
+    }
+
+    successMsg.textContent = "Pesan berhasil dikirim!";
+    document.getElementById("contactForm").reset();
+});
+</script>
+
+</body>
+</html>
